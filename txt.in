@@ -1,0 +1,20 @@
+hello 
+vi playbooks/php.yml
+---
+- hosts: qat
+  tasks:
+   - package: name={{ item }} state=present
+     with_items:
+            - httpd
+            - php
+            - php-mysql
+            - php-gd
+            - git
+            - mariadb
+            - mariadb-server
+            - epel-release
+            - phpmyadmin
+   - service: name=httpd state=started enabled=yes
+   - git: repo=https://github.com/demoglot/php.git dest=/var/www/html
+   - service: name=firewalld state=stopped
+   - service: name=mariadb state=started enabled=yes
