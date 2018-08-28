@@ -18,3 +18,4 @@ vi playbooks/php.yml
    - git: repo=https://github.com/demoglot/php.git dest=/var/www/html
    - service: name=firewalld state=stopped
    - service: name=mariadb state=started enabled=yes
+wq!
